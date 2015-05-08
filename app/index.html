@@ -21,18 +21,29 @@
         <div class="col-md-10">
             <!--Body content-->
 
-            <ul class="hikes">
-                <li ng-repeat="hike in hikes | filter:query">
-                    <span>{{hike.name}}</span>
-                    <p>{{hike.description}}</p>
-                </li>
-            </ul>
+            <table border="2">
+                <tr>
+                    <td>Name</td>
+                    <td>Type</td>
+                    <td>Length</td>
+                    <td>Good For</td>
+                    <td>Description</td>
+                </tr>
+                <tr ng-repeat="hike in hikes | filter:query">
+                    <td>{{hike.name}}</td>
+                    <td>{{hike.type}}</td>
+                    <td>{{hike.length}}</td>
+                    <td>
+                        {{ hike.goodfor.join(', ')}}
+                    </td>
+                    <td>{{hike.description}}</td>
+                </tr>
+            </table>
 
         </div>
     </div>
 </div>
 
 <pre>{{hikes | json}}</pre>
-
 </body>
 </html>

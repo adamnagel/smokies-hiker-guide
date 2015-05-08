@@ -1,10 +1,46 @@
 [
     {
-        "name": "Snake's Den Ridge",
-        "description": "It's a hike and stuff"
+        "index": 1,
+        "name": "Pine Mountain Loop",
+        "type": "loop",
+        "length": 8.1,
+        "description": "It's a hike and stuff",
+        "goodfor": [
+            "Backpacking",
+            "Dayhiking",
+            "Horses"
+        ]
     }, 
     {
-        "name": "Mount Cammerer",
-        "description": "There's a fire tower"
+        "index": 2,
+        "name": "Abrams Falls via Abrams Creek Ranger Station",
+        "type": "out & back",
+        "length": 11.0,
+        "description": "There's a fire tower",
+        "goodfor": [
+            "Backpacking",
+            "Dayhiking"
+        ]
+    },
+    {
+        "index": 3,
+        "name": "Abrams Falls via Cades Cove",
+        "type": "out & back",
+        "length": 5.0,
+        "description": "There's a fire tower",
+        "goodfor": [
+            "Dayhiking"
+        ]
+    },
+    {
+        "index": 4,
+        "name": "Gregory Bald via Gregory Ridge",
+        "type": "out & back",
+        "length": 11.0,
+        "description": "There's a fire tower",
+        "goodfor": [
+            "Backpacking",
+            "Dayhiking"
+        ]
     }
 ]
