@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="smokiesHikerGuideApp">
+<head>
+    <meta charset="utf-8">
+    <title>Smokies Hiker's Guide</title>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="HikerGuideCtrl">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            <!--Sidebar content-->
+            Search: <input ng-model="query">
+
+        </div>
+        <div class="col-md-10">
+            <!--Body content-->
+
+            <ul class="hikes">
+                <li ng-repeat="hike in hikes | filter:query">
+                    <span>{{hike.name}}</span>
+                    <p>{{hike.description}}</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+
+<pre>{{hikes | json}}</pre>
+
+</body>
+</html>
