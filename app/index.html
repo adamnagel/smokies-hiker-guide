@@ -5,6 +5,7 @@
     <title>Smokies Hiker's Guide</title>
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -13,18 +14,64 @@
 </head>
 <body ng-controller="HikerGuideCtrl">
 
+<div class="col-md-2">
+    Search: <input ng-model="query">
+    Sort By:
+    <select ng-model="orderProp">
+        <option value="length">Shorter</option>
+        <option value="-length">Longer</option>
+        <option value="difficulty">Easier</option>
+        <option value="-difficulty">Harder</option>
+    </select>
+
+    <div>
+        <input type="checkbox" ng-model="featureFilter['Backpacking']"/> Backpacking
+    </div>
+
+    <div>
+        <input type="checkbox" ng-model="featureFilter['Dayhiking']"/> Dayhiking
+    </div>
+
+    <div>
+        <input type="checkbox" ng-model="featureFilter['Horses']"/> Horses
+    </div>
+
+</div>
+
 <div class="gridListdemoBasicUsage">
     <md-content>
         <md-list>
-            <md-list-item ng-repeat="hike in hikes" class="md-3-line">
+            <md-list-item ng-repeat="hike in hikes | filter:filterByFeature | orderBy:orderProp" class="md-3-line">
                 <div class="md-list-item-text">
                     <h3>{{hike.name}}</h3>
-                    <p>{{hike.type}}</p>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <b>Type:</b> {{hike.type}}
+                            </div>
+                            <div class="col-md-2">
+                                <b>Length:</b> {{hike.length}} mi
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <b>Difficulty:</b> {{hike.difficulty}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                {{ hike.goodfor.join(', ') }}
+                            </div>
+                        </div>
+                    </div>
+                    <p>{{hike.description}}</p>
                 </div>
             </md-list-item>
         </md-list>
     </md-content>
 </div>
+
 
 <!--<div class="container-fluid">
     <div class="row">
@@ -57,6 +104,7 @@
 </div>
 -->
 
-<pre>{{hikes | json}}</pre>
+<!--<pre>{{hikes | json}}</pre>-->
+
 </body>
 </html>

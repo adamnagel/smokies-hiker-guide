@@ -9,7 +9,8 @@
             "Backpacking",
             "Dayhiking",
             "Horses"
-        ]
+        ],
+        "difficulty": 2.5
     }, 
     {
         "index": 2,
@@ -20,7 +21,8 @@
         "goodfor": [
             "Backpacking",
             "Dayhiking"
-        ]
+        ],
+        "difficulty": 3
     },
     {
         "index": 3,
@@ -30,7 +32,8 @@
         "description": "There's a fire tower",
         "goodfor": [
             "Dayhiking"
-        ]
+        ],
+        "difficulty": 2
     },
     {
         "index": 4,
@@ -41,6 +44,18 @@
         "goodfor": [
             "Backpacking",
             "Dayhiking"
-        ]
+        ],
+        "difficulty": 4
+    },
+    {
+        "index": 25,
+        "name": "Mount Cammerer via Low Gap",
+        "type": "out & back",
+        "length": 11.2,
+        "description": "There's an observation tower",
+        "goodfor": [
+            "Dayhiking"
+        ],
+        "difficulty": 5
     }
 ]
