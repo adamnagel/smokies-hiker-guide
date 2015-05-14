@@ -7,19 +7,32 @@
     <link rel="stylesheet" href="css/app.css">
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="js/controllers.js"></script>
 </head>
 <body ng-controller="HikerGuideCtrl">
 
-<div class="container-fluid">
+<div class="gridListdemoBasicUsage">
+    <md-content>
+        <md-list>
+            <md-list-item ng-repeat="hike in hikes" class="md-3-line">
+                <div class="md-list-item-text">
+                    <h3>{{hike.name}}</h3>
+                    <p>{{hike.type}}</p>
+                </div>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</div>
+
+<!--<div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-            <!--Sidebar content-->
             Search: <input ng-model="query">
 
         </div>
-        <div class="col-md-10">
-            <!--Body content-->
+
 
             <table border="2">
                 <tr>
@@ -40,9 +53,9 @@
                 </tr>
             </table>
 
-        </div>
     </div>
 </div>
+-->
 
 <pre>{{hikes | json}}</pre>
 </body>
