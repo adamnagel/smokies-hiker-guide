@@ -1,7 +1,23 @@
 /* app css stylesheet */
 
 body {
-  padding-top: 20px;
+    padding-top: 20px;
 }
 
+section {
+    background: #f7f7f7;
+    border-radius: 1px;
+    text-align: left;
+    margin: 0.1em;
+    position: relative !important;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 
+.label {
+    color: black;
+}
+
+md-content {
+    margin-right: 7px;
+}

@@ -24,85 +24,125 @@
         <option value="-difficulty">Harder</option>
     </select>
 
-    <div>
-        <input type="checkbox" ng-model="featureFilter['Backpacking']"/> Backpacking
-    </div>
+    <br>
 
-    <div>
-        <input type="checkbox" ng-model="featureFilter['Dayhiking']"/> Dayhiking
-    </div>
+    <md-content>
+        <section layout="column">
+            <div class="label">Good For</div>
+            <md-checkbox ng-repeat="(goodfor, state) in filters.goodfor"
+                         ng-model="filters.goodfor[goodfor]">
+                <div layout="row" layout-align="space-between start">
+                    <img ng-src="svg/{{goodfor}}.svg" style="width: auto; height: 25px;">
 
-    <div>
-        <input type="checkbox" ng-model="featureFilter['Horses']"/> Horses
-    </div>
+                    <div>{{goodfor}}</div>
+                </div>
+            </md-checkbox>
+        </section>
+
+        <br>
+
+        <section layout="column">
+            <div class="label">Features</div>
+            <md-checkbox ng-repeat="(feature, state) in filters.features"
+                         ng-model="filters.features[feature]">
+                <div layout="row" layout-align="space-between start">
+                    <img ng-src="svg/{{feature}}.svg" style="width: auto; height: 25px;">
+
+                    <div>{{feature}}</div>
+                </div>
+            </md-checkbox>
+        </section>
+
+        <br>
+
+        <section layout="column">
+            <div flex class="label">Length</div>
+            <div layout="row" layout-align="space-between center">
+                <div>
+                <input type="number" step="0.5" name="Minimum"
+                       ng-model="filters.length.minimum" min="1"
+                       max="{{filters.length.maximum}}">
+                </div>
+
+                <div>to</div>
+
+                <div>
+                <input type="number" step="0.5" name="Maximum"
+                       ng-model="filters.length.maximum"
+                       min="{{filters.length.minimum}}" max="30">
+                </div>
+            </div>
+        </section>
+
+        <br>
+
+        <section layout="column">
+            <div flex class="label">Difficulty</div>
+            <div layout="row" layout-align="space-between center">
+                <div>
+                    <input type="number" step="0.5" name="Minimum"
+                           ng-model="filters.difficulty.minimum" min="1"
+                           max="{{filters.difficulty.maximum}}">
+                </div>
+
+                <div>to</div>
+
+                <div>
+                    <input type="number" step="0.5" name="Maximum"
+                           ng-model="filters.difficulty.maximum"
+                           min="{{filters.difficulty.minimum}}" max="5">
+                </div>
+            </div>
+        </section>
+
+    </md-content>
+
+    <br>
+
+    <div class="md-body-1">Filters:</div>
+    {{filters | json}}
 
 </div>
 
-<div class="gridListdemoBasicUsage">
+<div>
     <md-content>
-        <md-list>
-            <md-list-item ng-repeat="hike in hikes | filter:filterByFeature | orderBy:orderProp" class="md-3-line">
-                <div class="md-list-item-text">
-                    <h3>{{hike.name}}</h3>
+        <md-card ng-repeat="hike in hikes | filter:filterHikes | orderBy:orderProp">
+            <h2 class="md-title">{{hike.name}}</h2>
 
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <b>Type:</b> {{hike.type}}
-                            </div>
-                            <div class="col-md-2">
-                                <b>Length:</b> {{hike.length}} mi
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                <b>Difficulty:</b> {{hike.difficulty}}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5">
-                                {{ hike.goodfor.join(', ') }}
-                            </div>
-                        </div>
+            <div layout="row" layout-align="start start">
+                <div layout="column">
+                    <div class="row-md-2">
+                        <b>Type:</b> {{hike.type}}
                     </div>
-                    <p>{{hike.description}}</p>
+                    <div class="row-md-2">
+                        <b>Length:</b> {{hike.length}} mi
+                    </div>
+                    <div class="row-md-2">
+                        <b>Difficulty:</b> {{hike.difficulty}}
+                    </div>
+                    <div layout="row">
+                        <img ng-repeat="goodfor in hike.goodfor"
+                             ng-src="svg/{{goodfor}}.svg"
+                             style="width: auto; height: 25px;">
+                    </div>
+                    <div layout="row">
+                        <img ng-repeat="feature in hike.features"
+                             ng-src="svg/{{feature}}.svg"
+                             style="width: auto; height: 25px;">
+                    </div>
                 </div>
-            </md-list-item>
-        </md-list>
+
+                <div flex="5"></div>
+
+                <div flex="auto">
+                    {{hike.description}}
+                </div>
+
+            </div>
+        </md-card>
     </md-content>
 </div>
 
-
-<!--<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2">
-            Search: <input ng-model="query">
-
-        </div>
-
-
-            <table border="2">
-                <tr>
-                    <td>Name</td>
-                    <td>Type</td>
-                    <td>Length</td>
-                    <td>Good For</td>
-                    <td>Description</td>
-                </tr>
-                <tr ng-repeat="hike in hikes | filter:query">
-                    <td>{{hike.name}}</td>
-                    <td>{{hike.type}}</td>
-                    <td>{{hike.length}}</td>
-                    <td>
-                        {{ hike.goodfor.join(', ')}}
-                    </td>
-                    <td>{{hike.description}}</td>
-                </tr>
-            </table>
-
-    </div>
-</div>
--->
 
 <!--<pre>{{hikes | json}}</pre>-->
 
